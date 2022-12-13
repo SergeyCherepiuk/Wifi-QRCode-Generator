@@ -35,7 +35,7 @@ class WifiListFragment : Fragment(R.layout.fragment_wifi_list) {
             }
         }
 
-        binding.recyclerView.adapter = MyAdapter(viewModel.getItems())
+        binding.recyclerView.adapter = MyAdapter(viewModel.getAllItems())
     }
 
     // TODO: Save details about wifi QRs to a file and parse it (json) latter

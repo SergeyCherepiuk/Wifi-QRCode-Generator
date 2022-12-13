@@ -18,10 +18,11 @@ class AddNewItemFragment : Fragment(R.layout.fragment_add_new_item) {
         binding = FragmentAddNewItemBinding.bind(view)
 
         binding.btnSave.setOnClickListener {
-            viewModel.addItem(
-                binding.etSSID.text.toString(),
-                binding.etPassword.text.toString()
-            )
+            val ssid = binding.etSSID.text.toString()
+            val password = binding.etPassword.text.toString()
+            if (ssid.isNotEmpty()) {
+                viewModel.addItem(ssid, password)
+            }
             parentFragmentManager.popBackStack()
         }
     }

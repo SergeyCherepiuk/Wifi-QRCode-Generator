@@ -6,7 +6,7 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.WriterException
 
-class qrCode {
+class QRCode {
     fun generateQRCode(text: String): Bitmap {
         val width = 400
         val height = 400
