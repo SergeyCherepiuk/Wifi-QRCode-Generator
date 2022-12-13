@@ -8,6 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wifiqrcodes.databinding.FragmentWifiListBinding
 import androidx.fragment.app.*
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class WifiListFragment : Fragment(R.layout.fragment_wifi_list) {
     companion object {
@@ -17,6 +21,7 @@ class WifiListFragment : Fragment(R.layout.fragment_wifi_list) {
     private lateinit var binding: FragmentWifiListBinding
     private val viewModel: ItemsViewModel by activityViewModels()
 
+    @OptIn(DelicateCoroutinesApi::class)
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

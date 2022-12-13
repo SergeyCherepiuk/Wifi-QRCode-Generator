@@ -5,6 +5,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.room.Room
+import kotlinx.coroutines.*
 
 @RequiresApi(Build.VERSION_CODES.R)
 class ItemsViewModel(application: Application) : AndroidViewModel(application){
@@ -12,13 +13,18 @@ class ItemsViewModel(application: Application) : AndroidViewModel(application){
         application.applicationContext,
         AppDatabase::class.java,
         "app_database"
-    ).allowMainThreadQueries().build();
+    ).build()
 
+    @OptIn(DelicateCoroutinesApi::class)
     fun addItem(ssid: String, password: String) {
-        appDatabase.itemDao().insert(Item(null, ssid, password))
+        GlobalScope.launch(Dispatchers.IO) {
+            appDatabase.itemDao().insert(Item(null, ssid, password))
+        }
     }
 
     fun getAllItems(): List<Item> {
-        return appDatabase.itemDao().getAllItems()
+        return runBlocking {
+            appDatabase.itemDao().getAllItems()
+        }
     }
 }
