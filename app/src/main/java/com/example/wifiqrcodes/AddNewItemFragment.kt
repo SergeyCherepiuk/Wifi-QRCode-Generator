@@ -22,8 +22,8 @@ class AddNewItemFragment : Fragment(R.layout.fragment_add_new_item) {
             val password = binding.etPassword.text.toString()
             if (ssid.isNotEmpty()) {
                 viewModel.addItem(ssid, password)
+                parentFragmentManager.popBackStack()
             }
-            parentFragmentManager.popBackStack()
         }
     }
 }
