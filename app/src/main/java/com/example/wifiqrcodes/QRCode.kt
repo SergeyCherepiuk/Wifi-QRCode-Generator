@@ -1,27 +1,24 @@
 package com.example.wifiqrcodes
 
 import android.graphics.Bitmap
-import android.graphics.Color
-import com.google.zxing.BarcodeFormat
-import com.google.zxing.MultiFormatWriter
-import com.google.zxing.WriterException
+import androidmads.library.qrgenearator.QRGContents
+import androidmads.library.qrgenearator.QRGEncoder
+import androidx.core.graphics.get
+import androidx.core.graphics.set
 
 class QRCode {
     fun generateQRCode(text: String): Bitmap {
-        val width = 400
-        val height = 400
-        val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
-        val codeWriter = MultiFormatWriter()
-        try {
-            val bitMatrix = codeWriter.encode(text, BarcodeFormat.QR_CODE, width, height)
-            for (x in 0 until width) {
-                for (y in 0 until height) {
-                    val color = if (bitMatrix[x, y]) Color.BLACK else Color.WHITE
-                    bitmap.setPixel(x, y, color)
+        val dimension = 400
+        val qrCode = QRGEncoder(text, null, QRGContents.Type.TEXT, dimension)
+        val bitmap = qrCode.bitmap
+        for (i in 0 until dimension) {
+            for (j in 0 until dimension) {
+                if (bitmap[i, j] == qrCode.colorBlack) {
+                    bitmap[i, j] = qrCode.colorWhite
+                } else {
+                    bitmap[i, j] = qrCode.colorBlack
                 }
             }
-        } catch (e: WriterException) {
-            e.printStackTrace()
         }
         return bitmap
     }

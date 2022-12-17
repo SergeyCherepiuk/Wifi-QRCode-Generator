@@ -32,7 +32,7 @@ class WifiListFragment : Fragment(R.layout.fragment_wifi_list) {
 
         binding.viewPager.adapter = ViewPagerAdapter(viewModel.getAllItems())
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            //Some implementation
+
         }.attach()
     }
 
