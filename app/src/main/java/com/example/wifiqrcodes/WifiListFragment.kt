@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wifiqrcodes.databinding.FragmentWifiListBinding
 import androidx.fragment.app.*
+import com.google.android.material.tabs.TabLayoutMediator
 
 class WifiListFragment : Fragment(R.layout.fragment_wifi_list) {
     companion object {
@@ -22,11 +22,6 @@ class WifiListFragment : Fragment(R.layout.fragment_wifi_list) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentWifiListBinding.bind(view)
 
-        binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
-            setHasFixedSize(true)
-        }
-
         binding.fabAdd.setOnClickListener {
             parentFragmentManager.commit {
                 setReorderingAllowed(true)
@@ -35,7 +30,10 @@ class WifiListFragment : Fragment(R.layout.fragment_wifi_list) {
             }
         }
 
-        binding.recyclerView.adapter = MyAdapter(viewModel.getAllItems())
+        binding.viewPager.adapter = ViewPagerAdapter(viewModel.getAllItems())
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            //Some implementation
+        }.attach()
     }
 
     // TODO: Create fragment to observe details of list item with opportunity to delete it
