@@ -3,14 +3,19 @@ package com.example.wifiqrcodes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ViewPagerAdapter(private val itemList: List<Item>) : RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
+class ViewPagerAdapter(
+    private val itemList: MutableList<Item>,
+    private val callback: ViewPagerAdapterCallback,
+) : RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val ivQRCode: ImageView = itemView.findViewById(R.id.ivQRCode)
         val tvSSID: TextView = itemView.findViewById(R.id.tvSSID)
+        val btnDelete: ImageButton = itemView.findViewById(R.id.btnDelete)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerAdapter.ViewHolder {
@@ -24,6 +29,12 @@ class ViewPagerAdapter(private val itemList: List<Item>) : RecyclerView.Adapter<
         val currentItem = itemList[position]
         holder.ivQRCode.setImageBitmap(QRCode().generateQRCode(currentItem.getQRCode()))
         holder.tvSSID.text = currentItem.ssid
+        holder.btnDelete.setOnClickListener {
+            callback.onClick(currentItem)
+            itemList.remove(currentItem)
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position, itemList.size)
+        }
     }
 
     override fun getItemCount(): Int {

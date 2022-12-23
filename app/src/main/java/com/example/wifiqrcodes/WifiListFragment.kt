@@ -30,7 +30,15 @@ class WifiListFragment : Fragment(R.layout.fragment_wifi_list) {
             }
         }
 
-        binding.viewPager.adapter = ViewPagerAdapter(viewModel.getAllItems())
+        binding.viewPager.adapter = ViewPagerAdapter(
+            viewModel.getAllItems() as MutableList<Item>,
+            object : ViewPagerAdapterCallback {
+                override fun onClick(item: Item) {
+                    viewModel.delete(item)
+                }
+            }
+        )
+
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
 
         }.attach()

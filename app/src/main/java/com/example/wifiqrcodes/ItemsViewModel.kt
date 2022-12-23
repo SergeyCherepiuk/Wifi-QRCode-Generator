@@ -27,4 +27,11 @@ class ItemsViewModel(application: Application) : AndroidViewModel(application){
             appDatabase.itemDao().getAllItems()
         }
     }
+
+    @OptIn(DelicateCoroutinesApi::class)
+    fun delete(item: Item) {
+        GlobalScope.launch {
+            appDatabase.itemDao().delete(item)
+        }
+    }
 }
