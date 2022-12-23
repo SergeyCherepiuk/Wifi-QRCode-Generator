@@ -39,8 +39,8 @@ class WifiListFragment : Fragment(R.layout.fragment_wifi_list) {
                     parentFragmentManager.commit {
                         setReorderingAllowed(true)
                         viewModel.currentItem = item
-                        addToBackStack(EDIT_ITEM_TAG)
                         replace<EditItemFragment>(R.id.fragmentContainerView)
+                        addToBackStack(EDIT_ITEM_TAG)
                     }
                 }
             },
