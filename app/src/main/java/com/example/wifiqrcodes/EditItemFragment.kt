@@ -8,22 +8,23 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.wifiqrcodes.databinding.FragmentItemDetailsBinding
 
-class AddNewItemFragment : Fragment(R.layout.fragment_item_details) {
+class EditItemFragment : Fragment(R.layout.fragment_item_details) {
     private lateinit var binding: FragmentItemDetailsBinding
     private val viewModel: ItemsViewModel by activityViewModels()
 
-    @RequiresApi(Build.VERSION_CODES.R)
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentItemDetailsBinding.bind(view)
 
+        binding.etSSID.setText(viewModel.currentItem.ssid)
+        binding.etPassword.setText(viewModel.currentItem.password)
+
         binding.btnSave.setOnClickListener {
-            val ssid = binding.etSSID.text.toString()
-            val password = binding.etPassword.text.toString()
-            if (ssid.isNotEmpty()) {
-                viewModel.addItem(ssid, password)
-                parentFragmentManager.popBackStack()
-            }
+            viewModel.currentItem.ssid = binding.etSSID.text.toString()
+            viewModel.currentItem.password = binding.etPassword.text.toString()
+            viewModel.update(viewModel.currentItem)
+            parentFragmentManager.popBackStack()
         }
     }
 }

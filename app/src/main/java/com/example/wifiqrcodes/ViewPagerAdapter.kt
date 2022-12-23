@@ -10,11 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ViewPagerAdapter(
     private val itemList: MutableList<Item>,
-    private val callback: ViewPagerAdapterCallback,
+    private val editCallback: ViewPagerAdapterCallback,
+    private val deleteCallback: ViewPagerAdapterCallback,
 ) : RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val ivQRCode: ImageView = itemView.findViewById(R.id.ivQRCode)
         val tvSSID: TextView = itemView.findViewById(R.id.tvSSID)
+        val btnEdit: ImageButton = itemView.findViewById(R.id.btnEdit)
         val btnDelete: ImageButton = itemView.findViewById(R.id.btnDelete)
     }
 
@@ -29,8 +31,11 @@ class ViewPagerAdapter(
         val currentItem = itemList[position]
         holder.ivQRCode.setImageBitmap(QRCode().generateQRCode(currentItem.getQRCode()))
         holder.tvSSID.text = currentItem.ssid
+        holder.btnEdit.setOnClickListener {
+            editCallback.onClick(currentItem)
+        }
         holder.btnDelete.setOnClickListener {
-            callback.onClick(currentItem)
+            deleteCallback.onClick(currentItem)
             itemList.remove(currentItem)
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, itemList.size)

@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "item_table")
 data class Item(
     @PrimaryKey(autoGenerate = true) val id: Int?,
-    @ColumnInfo(name = "ssid") val ssid: String,
-    @ColumnInfo(name = "password") val password: String,
+    @ColumnInfo(name = "ssid") var ssid: String,
+    @ColumnInfo(name = "password") var password: String,
 ) {
     fun getQRCode(): String {
         return "WIFI:T:WPA;S:${ssid};P:${password};H:;;"

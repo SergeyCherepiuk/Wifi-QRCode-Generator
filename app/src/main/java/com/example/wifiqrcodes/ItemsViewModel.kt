@@ -8,7 +8,9 @@ import androidx.room.Room
 import kotlinx.coroutines.*
 
 @RequiresApi(Build.VERSION_CODES.R)
-class ItemsViewModel(application: Application) : AndroidViewModel(application){
+class ItemsViewModel(application: Application) : AndroidViewModel(application) {
+    lateinit var currentItem: Item
+
     private val appDatabase = Room.databaseBuilder(
         application.applicationContext,
         AppDatabase::class.java,
@@ -25,6 +27,13 @@ class ItemsViewModel(application: Application) : AndroidViewModel(application){
     fun getAllItems(): List<Item> {
         return runBlocking {
             appDatabase.itemDao().getAllItems()
+        }
+    }
+
+    @OptIn(DelicateCoroutinesApi::class)
+    fun update(item: Item) {
+        GlobalScope.launch {
+            appDatabase.itemDao().update(item)
         }
     }
 
