@@ -5,24 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <ImageView
-        android:id="@+id/ivQRCode"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/gradient"
+        android:layout_width="381dp"
+        android:layout_height="381dp"
+        android:src="@drawable/gradient"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.089"
+        app:layout_constraintVertical_bias="0"
+        app:shapeAppearanceOverlay="@style/round_image_shape_60"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivQRCode"
+        android:layout_width="381dp"
+        android:layout_height="381dp"
+        android:cropToPadding="false"
+        android:padding="55dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        app:shapeAppearanceOverlay="@style/round_image_shape_45"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvSSID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/mulish_bold"
         android:text=""
         android:textColor="@color/white"
@@ -46,7 +62,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSSID"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:contentDescription="@string/edit_button_description" />
 
     <ImageButton
         android:id="@+id/btnDelete"
@@ -63,6 +80,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnEdit"
         app:layout_constraintTop_toBottomOf="@+id/tvSSID"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:contentDescription="@string/delete_button_description" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

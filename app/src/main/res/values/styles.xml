@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="round_image_shape_45">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">45dp</item>
+    </style>
+    <style name="round_image_shape_60">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">60dp</item>
+    </style>
+</resources>

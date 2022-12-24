@@ -11,4 +11,6 @@
     <color name="gray">#FF777777</color>
     <color name="dark_gray">#FF373737</color>
     <color name="light_gray">#FF4F4F4F</color>
+    <color name="orange_gradient_start_color">#FFFF9966</color>
+    <color name="orange_gradient_end_color">#FFF87260</color>
 </resources>
