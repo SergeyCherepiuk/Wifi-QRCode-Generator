@@ -5,6 +5,8 @@
     <string name="password">Password</string>
     <string name="save">Save</string>
     <string name="delete">Delete</string>
+    <string name="add_button_description">Add new wifi</string>
     <string name="edit_button_description">Edit wifi details</string>
     <string name="delete_button_description">Delete wifi</string>
+    <string name="send_button_description">Send wifi QR code</string>
 </resources>

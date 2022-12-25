@@ -18,6 +18,7 @@ class ViewPagerAdapter(
         val tvSSID: TextView = itemView.findViewById(R.id.tvSSID)
         val btnEdit: ImageButton = itemView.findViewById(R.id.btnEdit)
         val btnDelete: ImageButton = itemView.findViewById(R.id.btnDelete)
+        val btnSend: ImageButton = itemView.findViewById(R.id.btnSend)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerAdapter.ViewHolder {
@@ -29,7 +30,7 @@ class ViewPagerAdapter(
 
     override fun onBindViewHolder(holder: ViewPagerAdapter.ViewHolder, position: Int) {
         val currentItem = itemList[position]
-        holder.ivQRCode.setImageBitmap(QRCode().generateQRCode(currentItem.getQRCode()))
+        holder.ivQRCode.setImageBitmap(QRCode.generateQRCode(currentItem.getQRCode()))
         holder.tvSSID.text = currentItem.ssid
         holder.btnEdit.setOnClickListener {
             editCallback.onClick(currentItem)
@@ -39,6 +40,9 @@ class ViewPagerAdapter(
             itemList.remove(currentItem)
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, itemList.size)
+        }
+        holder.btnSend.setOnClickListener {
+            // TODO: Send implicit intent (with Uri of QR code bitmap and "image/*" MIME type)
         }
     }
 

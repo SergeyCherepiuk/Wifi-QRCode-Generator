@@ -15,7 +15,7 @@
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0"
+        app:layout_constraintVertical_bias="0.07"
         app:shapeAppearanceOverlay="@style/round_image_shape_60"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -30,7 +30,7 @@
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0"
+        app:layout_constraintVertical_bias="0.07"
         app:shapeAppearanceOverlay="@style/round_image_shape_45"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -49,38 +49,53 @@
 
     <ImageButton
         android:id="@+id/btnEdit"
-        android:layout_width="130dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="@drawable/round_shape"
         android:backgroundTint="@color/light_gray"
+        android:contentDescription="@string/edit_button_description"
         android:minHeight="48dp"
         android:padding="10dp"
         android:src="@drawable/ic_action_edit"
-        android:text="@string/delete"
         app:layout_constraintEnd_toStartOf="@+id/btnDelete"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSSID"
-        tools:ignore="SpeakableTextPresentCheck"
-        android:contentDescription="@string/edit_button_description" />
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/btnDelete"
-        android:layout_width="130dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="@drawable/round_shape"
         android:backgroundTint="@color/light_gray"
+        android:contentDescription="@string/delete_button_description"
         android:minHeight="48dp"
         android:padding="10dp"
         android:src="@drawable/ic_action_delete"
-        android:text="@string/delete"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnSend"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnEdit"
         app:layout_constraintTop_toBottomOf="@+id/tvSSID"
-        tools:ignore="SpeakableTextPresentCheck"
-        android:contentDescription="@string/delete_button_description" />
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btnSend"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/round_shape"
+        android:backgroundTint="@color/light_gray"
+        android:contentDescription="@string/send_button_description"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:src="@drawable/ic_action_send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnDelete"
+        app:layout_constraintTop_toBottomOf="@+id/tvSSID"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

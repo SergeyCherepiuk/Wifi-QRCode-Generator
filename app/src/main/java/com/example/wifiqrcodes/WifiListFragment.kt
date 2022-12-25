@@ -4,7 +4,6 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.RequiresApi
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.example.wifiqrcodes.databinding.FragmentWifiListBinding
 import androidx.fragment.app.*
