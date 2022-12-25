@@ -9,7 +9,7 @@
         android:id="@+id/gradient"
         android:layout_width="381dp"
         android:layout_height="381dp"
-        android:src="@drawable/gradient"
+        android:src="@drawable/gradient_orange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"

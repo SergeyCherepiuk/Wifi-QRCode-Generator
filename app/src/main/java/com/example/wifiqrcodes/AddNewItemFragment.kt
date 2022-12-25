@@ -20,7 +20,7 @@ class AddNewItemFragment : Fragment(R.layout.fragment_item_details) {
         binding.btnSave.setOnClickListener {
             val ssid = binding.etSSID.text.toString()
             val password = binding.etPassword.text.toString()
-            if (ssid.isNotEmpty()) {
+            if (ssid.trim().isNotEmpty()) {
                 viewModel.addItem(ssid, password)
                 parentFragmentManager.popBackStack()
             }
