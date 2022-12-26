@@ -1,4 +1,4 @@
-package com.example.wifiqrcodes
+package com.example.wifiqrcodes.utils
 
 import android.graphics.Bitmap
 import androidmads.library.qrgenearator.QRGContents
@@ -6,7 +6,7 @@ import androidmads.library.qrgenearator.QRGEncoder
 import androidx.core.graphics.get
 import androidx.core.graphics.set
 
-class QRCode {
+class QRCodeGenerator {
     companion object {
         fun generateQRCode(text: String): Bitmap {
             val dimension = 400

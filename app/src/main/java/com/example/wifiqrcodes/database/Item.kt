@@ -1,4 +1,4 @@
-package com.example.wifiqrcodes
+package com.example.wifiqrcodes.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

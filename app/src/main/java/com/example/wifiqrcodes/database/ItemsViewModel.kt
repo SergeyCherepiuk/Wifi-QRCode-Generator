@@ -1,4 +1,4 @@
-package com.example.wifiqrcodes
+package com.example.wifiqrcodes.database
 
 import android.app.Application
 import android.os.Build

@@ -1,4 +1,4 @@
-package com.example.wifiqrcodes
+package com.example.wifiqrcodes.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,10 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.wifiqrcodes.database.Item
+import com.example.wifiqrcodes.utils.QRCodeGenerator
+import com.example.wifiqrcodes.R
+import com.example.wifiqrcodes.interfaces.ViewPagerAdapterCallback
 
 class ViewPagerAdapter(
     private val itemList: MutableList<Item>,
@@ -21,16 +25,16 @@ class ViewPagerAdapter(
         val btnSend: ImageButton = itemView.findViewById(R.id.btnSend)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.viewpager_item, parent, false)
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewPagerAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = itemList[position]
-        holder.ivQRCode.setImageBitmap(QRCode.generateQRCode(currentItem.getQRCode()))
+        holder.ivQRCode.setImageBitmap(QRCodeGenerator.generateQRCode(currentItem.getQRCode()))
         holder.tvSSID.text = currentItem.ssid
         holder.btnEdit.setOnClickListener {
             editCallback.onClick(currentItem)

@@ -1,4 +1,4 @@
-package com.example.wifiqrcodes
+package com.example.wifiqrcodes.fragments
 
 import android.os.Build
 import android.os.Bundle
@@ -7,6 +7,11 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.wifiqrcodes.databinding.FragmentWifiListBinding
 import androidx.fragment.app.*
+import com.example.wifiqrcodes.*
+import com.example.wifiqrcodes.adapters.ViewPagerAdapter
+import com.example.wifiqrcodes.database.Item
+import com.example.wifiqrcodes.database.ItemsViewModel
+import com.example.wifiqrcodes.interfaces.ViewPagerAdapterCallback
 import com.google.android.material.tabs.TabLayoutMediator
 
 class WifiListFragment : Fragment(R.layout.fragment_wifi_list) {

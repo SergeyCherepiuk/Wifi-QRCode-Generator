@@ -1,4 +1,4 @@
-package com.example.wifiqrcodes
+package com.example.wifiqrcodes.database
 
 import androidx.room.Dao
 import androidx.room.Delete
