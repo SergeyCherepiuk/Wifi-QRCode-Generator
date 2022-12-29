@@ -6,11 +6,12 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.example.wifiqrcodes.database.ItemsViewModel
+import com.example.wifiqrcodes.viewmodels.ItemsViewModel
 import com.example.wifiqrcodes.R
+import com.example.wifiqrcodes.database.Item
 import com.example.wifiqrcodes.databinding.FragmentItemDetailsBinding
 
-class AddNewItemFragment : Fragment(R.layout.fragment_item_details) {
+class AddItemDetailsFragment : Fragment(R.layout.fragment_item_details) {
     private lateinit var binding: FragmentItemDetailsBinding
     private val viewModel: ItemsViewModel by activityViewModels()
 
@@ -23,7 +24,7 @@ class AddNewItemFragment : Fragment(R.layout.fragment_item_details) {
             val ssid = binding.etSSID.text.toString()
             val password = binding.etPassword.text.toString()
             if (ssid.trim().isNotEmpty()) {
-                viewModel.addItem(ssid, password)
+                viewModel.addItem(Item(null, ssid, password))
                 parentFragmentManager.popBackStack()
             }
         }

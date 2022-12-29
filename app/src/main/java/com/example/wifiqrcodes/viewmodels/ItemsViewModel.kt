@@ -1,16 +1,19 @@
-package com.example.wifiqrcodes.database
+package com.example.wifiqrcodes.viewmodels
 
 import android.app.Application
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.room.Room
+import com.example.wifiqrcodes.adapters.ViewPagerAdapter
+import com.example.wifiqrcodes.database.AppDatabase
+import com.example.wifiqrcodes.database.Item
 import kotlinx.coroutines.*
 
 @RequiresApi(Build.VERSION_CODES.R)
 class ItemsViewModel(application: Application) : AndroidViewModel(application) {
-    lateinit var currentItem: Item
-
+    lateinit var adapter: ViewPagerAdapter
+    lateinit var itemList: MutableList<Item>
     private val appDatabase = Room.databaseBuilder(
         application.applicationContext,
         AppDatabase::class.java,
@@ -18,15 +21,16 @@ class ItemsViewModel(application: Application) : AndroidViewModel(application) {
     ).build()
 
     @OptIn(DelicateCoroutinesApi::class)
-    fun addItem(ssid: String, password: String) {
+    fun addItem(item: Item) {
         GlobalScope.launch(Dispatchers.IO) {
-            appDatabase.itemDao().insert(Item(null, ssid, password))
+            appDatabase.itemDao().insert(item)
         }
     }
 
     fun getAllItems(): List<Item> {
         return runBlocking {
-            appDatabase.itemDao().getAllItems()
+            itemList = appDatabase.itemDao().getAllItems().toMutableList()
+            itemList
         }
     }
 
@@ -42,5 +46,6 @@ class ItemsViewModel(application: Application) : AndroidViewModel(application) {
         GlobalScope.launch {
             appDatabase.itemDao().delete(item)
         }
+        itemList.remove(item)
     }
 }
