@@ -29,5 +29,9 @@ class EditItemDetailsFragment(private val item: Item) : Fragment(R.layout.fragme
             viewModel.update(item)
             parentFragmentManager.popBackStack()
         }
+
+        binding.btnBack.setOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
     }
 }

@@ -38,7 +38,7 @@ class ItemFragment(private val item: Item): Fragment(R.layout.viewpager_item) {
             }
         }
         binding.btnDeleteItem.setOnClickListener {
-            viewModel.delete(viewModel.adapter.removeItem(viewModel.itemList.indexOf(item)))
+            viewModel.delete(item)
         }
         binding.btnSendItem.setOnClickListener {
             // TODO: Send implicit intent (with Uri of QR code bitmap and "image/*" MIME type)

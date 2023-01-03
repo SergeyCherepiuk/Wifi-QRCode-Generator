@@ -1,24 +1,26 @@
 package com.example.wifiqrcodes.adapters
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.wifiqrcodes.database.Item
 import com.example.wifiqrcodes.fragments.AddItemFragment
 import com.example.wifiqrcodes.fragments.ItemFragment
+import com.example.wifiqrcodes.viewmodels.ItemsViewModel
 
-
+@RequiresApi(Build.VERSION_CODES.R)
 class ViewPagerAdapter(
     fragment: Fragment,
-    var itemList: MutableList<Item>,
+    private var viewModel: ItemsViewModel,
 ) : FragmentStateAdapter(fragment) {
-    private val fragmentIds = (itemList.map { item ->
+    private val fragmentIds = (viewModel.itemList.map { item ->
         ItemFragment(item).hashCode().toLong()
     } + AddItemFragment().hashCode().toLong()).toMutableList()
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            in itemList.indices -> {
-                ItemFragment(itemList[position])
+            in viewModel.itemList.indices -> {
+                ItemFragment(viewModel.itemList[position])
             }
             else -> {
                 AddItemFragment()
@@ -27,7 +29,7 @@ class ViewPagerAdapter(
     }
 
     override fun getItemCount(): Int {
-        return itemList.size + 1 // Items count + add new item page fragment
+        return viewModel.itemList.size + 1 // Items count + add new item page fragment
     }
 
     override fun getItemId(position: Int): Long {
@@ -38,11 +40,9 @@ class ViewPagerAdapter(
         return fragmentIds.contains(itemId)
     }
 
-    fun removeItem(position: Int): Item {
-        val item: Item = itemList.removeAt(position)
+    fun removeItem(position: Int) {
         fragmentIds.removeAt(position)
-        notifyItemRangeChanged(position, itemList.size + 1)
+        notifyItemRangeChanged(position, viewModel.itemList.size + 1)
         notifyItemRemoved(position)
-        return item
     }
 }

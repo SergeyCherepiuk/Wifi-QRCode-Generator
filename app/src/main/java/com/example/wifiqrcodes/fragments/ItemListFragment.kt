@@ -22,7 +22,7 @@ class ItemListFragment : Fragment(R.layout.fragment_item_list) {
 
         binding.viewPager.adapter = ViewPagerAdapter(
             fragment = this,
-            itemList = viewModel.getAllItems().toMutableList(),
+            viewModel = viewModel,
         )
 
         viewModel.adapter = binding.viewPager.adapter as ViewPagerAdapter

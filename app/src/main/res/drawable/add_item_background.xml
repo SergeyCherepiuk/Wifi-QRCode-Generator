@@ -4,8 +4,8 @@
     <stroke
         android:width="6dp"
         android:color="@color/light_gray"
-        android:dashGap="20dp"
-        android:dashWidth="30dp" />
+        android:dashGap="10dp"
+        android:dashWidth="19dp" />
     <padding android:bottom="40dp" />
 </shape>
 

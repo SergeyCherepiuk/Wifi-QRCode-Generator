@@ -20,10 +20,14 @@ class ItemsViewModel(application: Application) : AndroidViewModel(application) {
         "app_database"
     ).build()
 
-    @OptIn(DelicateCoroutinesApi::class)
+    init {
+        getAllItems()
+    }
+
     fun addItem(item: Item) {
-        GlobalScope.launch(Dispatchers.IO) {
+        runBlocking {
             appDatabase.itemDao().insert(item)
+            getAllItems()
         }
     }
 
@@ -39,13 +43,17 @@ class ItemsViewModel(application: Application) : AndroidViewModel(application) {
         GlobalScope.launch {
             appDatabase.itemDao().update(item)
         }
+        val index = itemList.indexOf(itemList.find { el -> el.id == item.id })
+        itemList[index] = item
     }
 
     @OptIn(DelicateCoroutinesApi::class)
     fun delete(item: Item) {
+        val index = itemList.indexOf(item)
+        itemList.remove(item)
+        adapter.removeItem(index)
         GlobalScope.launch {
             appDatabase.itemDao().delete(item)
         }
-        itemList.remove(item)
     }
 }

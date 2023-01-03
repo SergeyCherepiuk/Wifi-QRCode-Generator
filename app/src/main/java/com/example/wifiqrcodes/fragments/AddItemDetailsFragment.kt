@@ -28,5 +28,9 @@ class AddItemDetailsFragment : Fragment(R.layout.fragment_item_details) {
                 parentFragmentManager.popBackStack()
             }
         }
+
+        binding.btnBack.setOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
     }
 }

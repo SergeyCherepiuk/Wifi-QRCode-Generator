@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     android:background="@color/dark_gray">
 
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="12dp"
+        android:background="@null"
+        android:contentDescription="@string/back_button_description"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_action_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/etSSID"
