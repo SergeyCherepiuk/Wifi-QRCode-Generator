@@ -10,4 +10,6 @@
     <string name="delete_button_description">Delete wifi</string>
     <string name="send_button_description">Send wifi QR code</string>
     <string name="back_button_description">Back to the wifi list</string>
+    <string name="login_button_description">Log in</string>
+    <string name="logout_button_description">Log out</string>
 </resources>

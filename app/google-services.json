@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "138043334162",
+    "project_id": "wifiqrcodes",
+    "storage_bucket": "wifiqrcodes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138043334162:android:4bf1c5f04ee5a18b5e42cb",
+        "android_client_info": {
+          "package_name": "com.example.wifiqrcodes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "138043334162-v3aanb3hds6p31lq9f2vua2sa8gicbnb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wifiqrcodes",
+            "certificate_hash": "6b275f0ee3f7a0571ef292ba8a7d2f5b407bc12f"
+          }
+        },
+        {
+          "client_id": "138043334162-3hvp4uo3vvtqfj74cpvjg5ek1l8u6f43.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrZ8YXOp98KynbmrfCu2QSJ8J4udnrtDA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "138043334162-3hvp4uo3vvtqfj74cpvjg5ek1l8u6f43.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
