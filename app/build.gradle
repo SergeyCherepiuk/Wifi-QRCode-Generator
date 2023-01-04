@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'com.google.gms.google-services'
+    id 'com.google.firebase.firebase-perf'
 }
 
 android {
@@ -38,7 +39,6 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
@@ -47,21 +47,35 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
+    // QRCode lib
     implementation 'com.github.androidmads:QRGenerator:1.0.1'
+
+    // Fragments
     implementation 'androidx.fragment:fragment-ktx:1.5.5'
+
+    // ViewPager2 and recycler view
+    implementation 'androidx.viewpager2:viewpager2:1.1.0-beta01'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
+    // Room (local database)
     implementation 'androidx.room:room-ktx:2.4.3'
     implementation 'androidx.room:room-runtime:2.4.3'
     kapt 'androidx.room:room-compiler:2.4.3'
+
+    // ViewModels
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+
+    // Coroutines
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
     implementation 'androidx.paging:paging-compose:1.0.0-alpha17'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
-    implementation 'androidx.viewpager2:viewpager2:1.1.0-beta01'
+
+    // Firebase
     implementation platform('com.google.firebase:firebase-bom:31.1.1')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.android.gms:play-services-base:18.1.0'
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.android.gms:play-services-auth:20.4.0'
+    implementation 'com.google.firebase:firebase-perf'
 }
